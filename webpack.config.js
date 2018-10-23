@@ -20,8 +20,16 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin()
     ],
     module: {
-        loaders: [{
+        rules: [{
             test: /\.js$/,
+            enforce: 'pre',
+            exclude: /node_modules/,
+            include: /src/,
+            loader: 'standard-loader'
+        },
+        {
+            test: /\.js$/,
+            enforce: 'post',
             exclude: /node_modules/,
             include: /src/,
             loader: 'babel-loader'
